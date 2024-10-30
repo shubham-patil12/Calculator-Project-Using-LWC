@@ -1,0 +1,61 @@
+Basic Calculator Projects Using LWC...
+ Here Is The Code...
+        ====================basicCalculator.html==========
+
+<template>   
+    <div class="slds-box" style="width:30%">
+        <lightning-input type="number" onchange={firstInputChange} value={firstInput} name="firstInput" label="First Number" placeholder="Enter First Number"></lightning-input>  
+        <lightning-input type="number" onchange={secondInputChange} value={secondInput} name="SecondInput" label="Second Number" placeholder="Enter Second Number"></lightning-input>  
+        <div class="slds-p-top_small">
+            <lightning-button-group>
+                <lightning-button variant="brand" label="Add" title="Add" onclick={add}></lightning-button>
+                <lightning-button variant="brand" label="Subtract" title="Subtract" onclick={subtract}></lightning-button>
+                <lightning-button variant="brand" label="Multipication" title="Multipication" onclick={multipication}></lightning-button>
+                <lightning-button variant="brand" label="Divison" title="Divison" onclick={div}></lightning-button>
+            </lightning-button-group>
+        </div>
+        <div class="slds-box slds-theme_shade">
+            <p>The result is  {totalValue}</p>
+        </div>
+    </div>
+</template>
+
+=========basicCalculator.js===============
+
+import { LightningElement } from 'lwc';
+
+export default class BasicCalculator extends LightningElement {
+    firstInput;
+    secondInput;
+    totalValue; 
+    firstInputChange(event){
+        this.firstInput =  event.target.value;   
+    } 
+    secondInputChange(event){
+        this.secondInput = event.target.value;
+    }  
+    add(event){
+        this.totalValue = Number(this.firstInput) + Number(this.secondInput); 
+    }
+    subtract(event){
+        this.totalValue = Number(this.firstInput) - Number(this.secondInput); 
+    }
+    multipication(event){
+        this.totalValue = Number(this.firstInput) * Number(this.secondInput); 
+    }
+    div(event){
+        this.totalValue = Number(this.firstInput) / Number(this.secondInput); 
+    }
+}
+
+=============basicCalculator.js-meta.xml===========
+
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="https://lnkd.in/ghNH68eq" fqn="basicCalculator">
+    <apiVersion>62.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightning__RecordPage</target>
+        <target>lightning__AppPage</target>
+    </targets>
+#salesforce #trailhead #salesforcecommunity #trailblazerscommunity
